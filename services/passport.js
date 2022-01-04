@@ -8,9 +8,9 @@ passport.serializeUser((user, done) => {
 });
 passport.deserializeUser(async (id, done) => {
   console.log("deserialized");
-  console.log(id);
+  console.log("deserialized:", id);
   const user = await User.findById(id);
-
+  console.log("deserialized:", user);
   done(null, user);
 });
 passport.use(
@@ -27,7 +27,7 @@ passport.use(
         const user = await User.create({ googleId: profile.id });
         done(null, user);
       } else {
-        console.log("done");
+        console.log("done not created");
         done(null, existingUser);
       }
     }

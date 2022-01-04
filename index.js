@@ -5,9 +5,12 @@ const passport = require("passport");
 const { connect } = require("mongoose");
 const router = require("./routes/authRoutes");
 const { cookieKey, mongoURI } = require("./config/keys");
+const cors = require("cors");
 // clientid
 // clientsecrect
 // tell app to use cookies
+app.use(cors());
+app.use(express.json());
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,

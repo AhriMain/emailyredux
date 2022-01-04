@@ -21,6 +21,11 @@ router.get("/api/logout", (req, res) => {
   res.send(req.user);
 });
 router.get("/api/current_user", (req, res) => {
-  res.send({ message: req.user });
+  console.log("req.user:", req.user);
+  if (req.user) {
+    res.json(req.user);
+  } else {
+    res.json({ message: "not authorized" });
+  }
 });
 module.exports = router;
